@@ -7,6 +7,22 @@ class Prodotto:
     def calcola_profitto(self):
         return self.prezzo_vendita - self.costo_produzione
     
+class Elettronica(Prodotto):
+    def __init__(self, nome, costo_produzione, prezzo_vendita):
+        super().__init__(nome, costo_produzione, prezzo_vendita)
+    
+    def aggiungi_specifica(self):
+        print("Settore telefonia ")
+
+
+class Sport(Prodotto):
+    def __init__(self, nome, costo_produzione, prezzo_vendita):
+        super().__init__(nome, costo_produzione, prezzo_vendita)
+
+    def aggiungi_sport(self):
+        print("Specifica sport")
+   
+    
 class Fabbrica:
     def __init__(self,inventario):
         self.inventario = {}
