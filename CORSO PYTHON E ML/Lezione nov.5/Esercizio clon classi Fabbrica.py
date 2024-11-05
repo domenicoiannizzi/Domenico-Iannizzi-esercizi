@@ -7,21 +7,24 @@ class Prodotto:
     def calcola_profitto(self):
         return self.prezzo_vendita - self.costo_produzione
     
+    def get_prezzo_vendita(self):   #metodo getter e setter per prezzo di vendita
+        return self.__prezzo_vendita
+             
+    
+    def set_prezzo_vendita(self, prezzo_vendita):
+        
+        self.__prezzo_vendita = prezzo_vendita
+        print("Prezzo vendita : ", prezzo_vendita)
+    
 class Elettronica(Prodotto):
     def __init__(self, nome, costo_produzione, prezzo_vendita):
         super().__init__(nome, costo_produzione, prezzo_vendita)
     
-    def aggiungi_specifica(self):
-        print("Settore telefonia ")
-
-
+    
 class Sport(Prodotto):
     def __init__(self, nome, costo_produzione, prezzo_vendita):
         super().__init__(nome, costo_produzione, prezzo_vendita)
 
-    def aggiungi_sport(self):
-        print("Specifica sport")
-   
     
 class Fabbrica:
     def __init__(self,inventario):
@@ -45,6 +48,12 @@ class Fabbrica:
         pass
 
 prodotto=Prodotto("Lampade",325,466)
+elettronica=Elettronica("Tv",211,1010)
+
+elettronica.set_prezzo_vendita(850)
+
+
+
 
 fabbrica=Fabbrica()
 
