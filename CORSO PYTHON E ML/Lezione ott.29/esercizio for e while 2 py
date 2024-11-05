@@ -1,0 +1,44 @@
+num1 = int(input("Inserisci il primo numero dell'intervallo: "))
+num2 = int(input("Inserisci il secondo numero dell'intervallo: "))
+
+# Inizializza le liste per i numeri primi e per i numeri non primi
+numeri_primi = []
+numeri_non_primi = []
+
+if num2> num1:
+    for num in range(num1, num2+ 1):
+        if num > 1:  
+            is_prime= True
+            for i in range(2, int(num ** 0.5) + 1):
+                if num % i == 0:
+                    is_prime = False
+                    break
+            if is_prime:
+                numeri_primi.append(num)
+            else:
+                numeri_non_primi.append(num)
+        else:
+            numeri_non_primi.append(num)
+elif numero1 == numero2 :
+    print("No")
+else:
+    for num in range(num1, num2+ 1):
+        if num > 1:  
+            is_prime= True
+    
+            for i in range(2, int(num ** 0.5) + 1):
+                if num % i == 0:
+                        is_prime = False
+                        break
+            if is_prime:
+                    numeri_primi.append(num)
+            else:
+                    numeri_non_primi.append(num)
+        else:
+            numeri_non_primi.append(num)          
+        
+
+
+print(numeri_primi)
+print(numeri_non_primi)
+
