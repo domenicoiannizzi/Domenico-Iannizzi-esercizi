@@ -62,7 +62,7 @@ sport=Sport("Racchetta",11,21)
 fabbrica=Fabbrica()
 
 fabbrica.aggiungi_prodotto(elettronica,28)                                  
-print("Prodotti dopo aggiunta in inventario:  \n" ,fabbrica.inventario)  #incapsulamento
+print("Prodotti dopo aggiunta in inventario:  \n" ,fabbrica.inventario) 
 fabbrica.vendi_prodotto(elettronica,2)
 
 fabbrica.vendi_prodotto(prodotto,4)
