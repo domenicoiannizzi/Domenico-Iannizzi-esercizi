@@ -16,6 +16,9 @@ class Prodotto:
         self.__prezzo_vendita = prezzo_vendita
         print("Prezzo vendita : ", prezzo_vendita)
     
+    def info_prodotto(self):
+        return f"Prodotto {self.nome} in vendita al prezzo di : {self.prezzo_vendita}"
+    
 class Elettronica(Prodotto):
     def __init__(self, nome, costo_produzione, prezzo_vendita):
         super().__init__(nome, costo_produzione, prezzo_vendita)
@@ -27,8 +30,9 @@ class Sport(Prodotto):
 
     
 class Fabbrica:
-    def __init__(self,inventario):
-        self.inventario = {}
+    def __init__(self, inventario=None):
+        inventario= {}
+        self.inventario = inventario
     
     def aggiungi_prodotto(self,prodotto,numero):
         if prodotto.nome in self.inventario:
@@ -48,17 +52,18 @@ class Fabbrica:
         pass
 
 prodotto=Prodotto("Lampade",325,466)
-elettronica=Elettronica("Tv",211,1010)
 
+elettronica=Elettronica("Tv",211,1010)
 elettronica.set_prezzo_vendita(850)
 
-
+sport=Sport("Racchetta",11,21)
 
 
 fabbrica=Fabbrica()
 
-fabbrica.aggiungi_prodotto(prodotto,28)
-print("Prodotti dopo aggiunta in inventario:  \n" ,fabbrica.inventario)
+fabbrica.aggiungi_prodotto(elettronica,28)                                  
+print("Prodotti dopo aggiunta in inventario:  \n" ,fabbrica.inventario)  #incapsulamento
+fabbrica.vendi_prodotto(elettronica,2)
 
 fabbrica.vendi_prodotto(prodotto,4)
 print("Inventario post vendite : \n",fabbrica.inventario) 
@@ -67,6 +72,6 @@ fabbrica.resi_prodotto(prodotto,2)
 print("Prodotti in inventario dopo il reso : ", fabbrica.inventario) #non resistuisce nulla di nuovo dopo il pass
 
         
-
+print(sport.info_prodotto())  #polimorfismo
 
 
