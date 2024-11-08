@@ -4,35 +4,60 @@ class SliceArray:
     def __init__(self,len,x,y):
         self.array= np.random.randint(x,y,len)
 
-    def primi10(self):
-        arr1=self.array[:10]
+    def primi10(self,n):
+        arr1=self.array[:n]
         return arr1
     
-    def ultimi5(self):
-        arr2=self.array[-5:]
+    def ultimi5(self,n):
+        arr2=self.array[-n:]
         return arr2
     
-    def from5to15(self):
-        arr3=self.array[5:15]
+    def from5to15(self,x,y):
+        arr3=self.array[x:y]
         return arr3
     
-    def ogni_terzo(self):
-        arr4=self.array[0:20:3]
+    def ogni_terzo(self,x,y,step):
+        arr4=self.array[x:y:step]
         return arr4
 
-    def modifica(self):
-        self.array[5:10] = 99
-        return self.array[5:10]
+    def modifica(self,x,y,val):
+        self.array[x:y] = val
+        return self.array
        
 
     def stampa(self):
         print("Array completo:", self.array)
-        print("Primi 10 elementi:", self.primi10())
-        print("Ultimi 5 elementi:", self.ultimi5())
-        print("Elementi dall'indice 5 al 15 :", self.from5to15())
-        print("Ogni terzo elemento:", self.ogni_terzo())
-        print("Array da 5 a 10 modificato : ", self.modifica())
+        # print("Primi 10 elementi:", self.primi10())
+        # print("Ultimi 5 elementi:", self.ultimi5())
+        # print("Elementi dall'indice 5 al 15 :", self.from5to15())
+        # print("Ogni terzo elemento:", self.ogni_terzo())
+   
 
 array=SliceArray(20,10,50)
-array.stampa()
+print(array)
 
+while True:
+        print("--- menù---")
+        print("1. Primi N elementi")
+        print("2. Ultimi N elementi")
+        print("3. Elementi dall'indice x al y")
+        print("4. Ogni x elemento")
+        print("5. Stampa l'array modificato da x a y con valore val")
+
+        scelta = input("Scegli un'opzione : ")
+
+
+        if scelta == '1':
+            print("\n Primi N elementi:", array.primi10(4))
+        elif scelta == '2':
+            print("\nUltimi N elementi:", array.ultimi5(6))
+        elif scelta == '3':
+            print("\n Elementi dall'indice x ad y:", array.from5to15(1,6))
+        elif scelta == '4':
+            print("\n Ogni x elemento:", array.ogni_terzo(2,12,2))
+        elif scelta == '5':
+            print("\n Array modificato :",array.modifica(4,9,15))
+            array.stampa()
+        else :
+            print("Esci dal programma.")
+            break 
