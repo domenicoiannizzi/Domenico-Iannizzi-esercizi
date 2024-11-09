@@ -27,20 +27,15 @@ class SliceArray:
 
     def stampa(self):
         print("Array completo:", self.array)
-        # print("Primi 10 elementi:", self.primi10())
-        # print("Ultimi 5 elementi:", self.ultimi5())
-        # print("Elementi dall'indice 5 al 15 :", self.from5to15())
-        # print("Ogni terzo elemento:", self.ogni_terzo())
-   
 
 array=SliceArray(20,10,50)
-print(array)
+print(array.array)
 
 while True:
         print("--- menù---")
         print("1. Primi N elementi")
         print("2. Ultimi N elementi")
-        print("3. Elementi dall'indice x al y")
+        print("3. Elementi dall'indice x ad y")
         print("4. Ogni x elemento")
         print("5. Stampa l'array modificato da x a y con valore val")
 
