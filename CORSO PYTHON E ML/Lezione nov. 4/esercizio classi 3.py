@@ -16,13 +16,20 @@ class Biblioteca:
         else:
             print("Biblioteca vuota")
 
-    def cerca(self,per_cosa,risposta):
-        cerca=[libro for libro in self.lista_libri if libro[per_cosa]== libro [risposta]]
-        print(f"Libro trovato in base a {per_cosa} e {risposta}")
-        for libro in cerca:
-                print(f"Titolo: {libro['titolo']}, Autore: {libro['autore']}, Pagine: {libro['pagine']}")
-           
-        
+    def cerca_in(self):
+        modalità = input(" Per cosa vuoi ricercare il libro ? ")
+        if modalità.lower() in ["titolo","autore"]:
+            cerca=input(f"Inserisci {modalità} che vuoi cercare :  ")
+            risultati = [libro for libro in self.lista_libri if libro[modalità] == cerca]
+            if len(risultati) >0:
+                for libro in risultati:
+                    print(libro)
+            else:
+                print("Non ha trovato nulla per questa ricerca")
+        else:
+            print("Devi cercare per titolo o autore")
+
+    
 
 biblioteca = Biblioteca()
 numero=int(input("Quanti libri vuoi inserire ?"))
@@ -34,6 +41,4 @@ for i in range(0,numero):
     biblioteca.inserisci(titolo,autore,pagine)
 
 biblioteca.stampa()
-per_cosa=input("Cerchi libro per titolo o per autore? ")
-risposta=input("Inserisci titolo/autore da cercare ")
-biblioteca.cerca(per_cosa,risposta)
+biblioteca.cerca_in()
