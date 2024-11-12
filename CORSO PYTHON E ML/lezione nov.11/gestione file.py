@@ -43,3 +43,21 @@
 # #     matrice.append(lementi)
 
 # print(matrice)
+
+
+######################################################################################################################################
+# FILE BINARIO:
+
+# with open("prova2", "wb") as file: ----> devo trasformare il dato anzichè in stringa, in binario. 
+
+# import pickle
+
+# diz={"uno":"due"}
+
+# with open("prova2.pkl","wb") as file:
+#     #pickle.dump(diz,file)
+
+# with open("prova2.pkl","rb") as file:
+#    contenuto=pickle.load(file)
+
+# print((contenuto)) 
