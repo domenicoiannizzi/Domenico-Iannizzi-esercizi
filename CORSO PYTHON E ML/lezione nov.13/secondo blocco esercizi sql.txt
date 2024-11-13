@@ -1,0 +1,48 @@
+es 1:
+Si vuole recuperare il numero di città per nazione dal database "world"
+mostrando anche il nome della nazione e ordinarli in base al numero di città.
+
+SELECT country.Name, COUNT(city.Name) AS città
+from country
+LEFT JOIN city ON city.CountryCode= country.Code
+GROUP BY country.Name
+ORDER BY città DESC
+
+es2.
+Si vuole conoscere la lista di repubbliche con aspettativa di vita maggiore
+dei 70 anni.
+
+SELECT country.Name, country.LifeExpectancy
+FROM country
+WHERE country.LifeExpectancy >70 and country.GovernmentForm LIKE '%Republic%' 
+ORDER BY country.LifeExpectancy DESC
+
+
+es.3 
+Si vuole recuperare dal database WORLD le lingue parlate per nazione con la rispettiva percentuale di utilizzo;
+
+CREATE VIEW lingue AS
+SELECT country.Name, countrylanguage.language, countrylanguage.Percentage
+FROM country
+INNER JOIN countrylanguage ON country.Code = countrylanguage.CountryCode
+ORDER BY country.Name
+
+
+es.4
+Create una vista chiamata PopulationByContinent che mostri il nome del
+continente e la popolazione totale per ciascun continente
+
+CREATE VIEW PopulationByContinent AS
+SELECT Continent, SUM(Population)  as popolazione
+FROM country
+GROUP BY Continent
+
+es.5 
+Create una vista chiamata CapitalCities che mostri il nome del paese e il nome
+della sua capitale
+
+SELECT country.name as stato ,city.Name as capitale ,countrylanguage.Language as lingua_ufficiale
+from country
+INNER JOIN city ON country.Code=city.CountryCode
+INNER JOIN countrylanguage ON country.Code= countrylanguage.CountryCode
+WHERE country.Capital= city.ID and countrylanguage.IsOfficial='T'

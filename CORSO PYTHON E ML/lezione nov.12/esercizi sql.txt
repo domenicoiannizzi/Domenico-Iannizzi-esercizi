@@ -1,0 +1,55 @@
+es 1 sql
+SELECT * from products
+WHERE buyPrice > 50
+
+
+
+es 2 sql
+SELECT * from orders
+ORDER BY orderDate DESC
+
+
+
+es 3 sql
+
+UPDATE products 
+SET buyPrice= buyPrice + (buyPrice * 0.10)
+
+es 4. sql
+
+INSERT INTO customers ( customerNumber,
+    customerName, 
+    contactLastName, 
+    contactFirstName, 
+    phone, 
+    addressLine1, 
+    city, 
+    state, 
+    postalCode, 
+    country, 
+    salesRepEmployeeNumber, 
+    creditLimit )
+    VALUES ('5811','negozio sport', 'Iannizzi', 'Domenico','333','corso città 1', 'cinquefrondi', 'calabria', '89021', 'italy',2554, 1541.00)
+SELECT employeeNumber FROM employees WHERE employeeNumber = 2554;
+
+es. 5 sql
+
+DELETE from orderdetails
+where orderNumber in (SELECT from orderdetails where status = "Cancelled)
+
+delete from orders
+where status = "Cancelled "
+
+
+
+
+es6 .sql
+SELECT * FROM `customers` WHERE contactFirstName like 'S%' and state = 'CA';
+
+
+es.7 sql
+SELECT city.Name, Country.name, countrylanguage.Language
+FROM city
+INNER JOIN country ON city.CountryCode= country.Code
+INNER JOIN countrylanguage ON country.Code= countrylanguage.CountryCode
+posso inserire una specifica come WHERE countrylanguage.IsOfficial= 'T'
