@@ -1,4 +1,5 @@
 import mysql.connector
+import hashlib
 
 class GestioneStudentiDB:
     def __init__(self):
@@ -39,6 +40,15 @@ class GestioneStudentiDB:
             FOREIGN KEY (materia_id) REFERENCES materie(id)
         )
         """)
+
+        self.cursor.execute("""
+        CREATE TABLE IF NOT EXISTS utenti(
+            id INT auto_increment primary key,
+            username VARCHAR(255) UNIQUE NOT NULL,
+            password VARCHAR(255) NOT NULL,
+            ruolo enum("admin","studente") ) """  )
+            
+       
 
     def aggiungi_studente(self, nome):
         try:
@@ -142,58 +152,93 @@ class GestioneStudentiDB:
         self.cursor.close()
         self.miodb.close()
 
+    def crea_utente(self,username,psw,ruolo):
+        password = hashlib.md5(psw.encode()).hexdigest()  
+        self.cursor.execute("INSERT INTO utenti (username,password,ruolo) VALUES( %s,%s,%s)",(username,password,ruolo))
+        self.miodb.commit()
+
+    def login(self,username,psw,ruolo):
+        password = hashlib.md5(psw.encode()).hexdigest()  
+        self.cursor.execute("SELECT * FROM utenti WHERE username = %s and password = %s  and ruolo = %s ",(username,password,ruolo))
+        user= self.cursor.fetchone()
+        return user
+
 
 # Funzione di menu per interazione
 def menu():
     gestione = GestioneStudentiDB()
-
+    c=gestione.miodb.cursor()
+    c.execute("SELECT * from utenti where ruolo = 'admin' ")  
+    if c.fetchone()  is None :
+        print("Nessun admin trovato")
+        admin_user=input("Inserisci admin ")
+        admin_psw=input("Inserisci password ")
+        gestione.crea_utente(admin_user,admin_psw,"admin")
+     
     while True:
+
         print("\n--- Menu Gestionale Studenti ---")
-        print("1. Aggiungi studente")
-        print("2. Aggiungi materia")
-        print("3. Aggiungi voto")
-        print("4. Elimina studente")
-        print("5. Modifica voto")
-        print("6. Stampa studenti e medie")
-        print("7. Esci")
 
-        scelta = input("Seleziona un'opzione: ")
+        username=input("Inserisci utente : ")
+        password=input("Inserisci password ")
+        ruolo=input("Inserisci ruolo admin o studente ")
+        user=gestione.login(username,password,ruolo)
+        if user:
+            if ruolo== "admin":
+                print("1. Aggiungi studente")
+                print("2. Aggiungi materia")
+                print("3. Aggiungi voto")
+                print("4. Elimina studente")
+                print("5. Modifica voto")
+                print("6. Stampa studenti e medie")
+                print("7. Esci")
+                scelta = input("Seleziona un'opzione: ")
 
-        if scelta == "1":
-            nome = input("Inserisci il nome dello studente: ")
-            gestione.aggiungi_studente(nome)
+                if scelta == "1":
+                    nome = input("Inserisci il nome dello studente: ")
+                    password=  input("Inserisci password ")
+                    ruolo=input("Inserisci ruolo admin/studente")
+                    gestione.crea_utente(nome,password,ruolo)
+                    gestione.aggiungi_studente(nome)
 
-        elif scelta == "2":
-            materia = input("Inserisci il nome della materia: ")
-            gestione.aggiungi_materia(materia)
+                elif scelta == "2":
+                    materia = input("Inserisci il nome della materia: ")
+                    gestione.aggiungi_materia(materia)
 
-        elif scelta == "3":
-            nome = input("Inserisci il nome dello studente: ")
-            materia = input("Inserisci la materia: ")
-            voto = int(input("Inserisci il voto: "))
-            gestione.aggiungi_voto(nome, materia, voto)
+                elif scelta == "3":
+                    nome = input("Inserisci il nome dello studente: ")
+                    materia = input("Inserisci la materia: ")
+                    voto = int(input("Inserisci il voto: "))
+                    gestione.aggiungi_voto(nome, materia, voto)
 
-        elif scelta == "4":
-            nome = input("Inserisci il nome dello studente da eliminare: ")
-            gestione.elimina_studente(nome)
+                elif scelta == "4":
+                    nome = input("Inserisci il nome dello studente da eliminare: ")
+                    gestione.elimina_studente(nome)
 
-        elif scelta == "5":
-            nome = input("Inserisci il nome dello studente: ")
-            materia = input("Inserisci la materia: ")
-            indice = int(input("Inserisci l'indice del voto da modificare (0 per il primo voto, 1 per il secondo, ecc.): "))
-            nuovo_voto = int(input("Inserisci il nuovo voto: "))
-            gestione.modifica_voto(nome, materia, indice, nuovo_voto)
+                elif scelta == "5":
+                    nome = input("Inserisci il nome dello studente: ")
+                    materia = input("Inserisci la materia: ")
+                    indice = int(input("Inserisci l'indice del voto da modificare (0 per il primo voto, 1 per il secondo, ecc.): "))
+                    nuovo_voto = int(input("Inserisci il nuovo voto: "))
+                    gestione.modifica_voto(nome, materia, indice, nuovo_voto)
 
-        elif scelta == "6":
-            gestione.stampa_studenti()
+                elif scelta == "6":
+                    gestione.stampa_studenti()
 
-        elif scelta == "7":
-            print("Uscita dal gestionale.")
-            gestione.chiudi_connessione()
-            break
+                elif scelta == "7":
+                    print("Uscita dal gestionale.")
+                    gestione.chiudi_connessione()
+                    break
+            elif user["ruolo"] == "studente":
+                print("6. Stampa studenti e medie")
+                gestione.stampa_studenti()
+            else:
+                print("Ruolo non valido")
 
         else:
             print("Opzione non valida, riprova.")
+           
+
 
 # Avvia il menu gestionale
 menu()
