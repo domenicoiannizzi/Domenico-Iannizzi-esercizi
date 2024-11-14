@@ -244,7 +244,10 @@ def menu():
                     print("6. Stampa studenti e medie")
                     gestione.stampa_studenti()
                 elif scelta2== "2":
-                    pass
+                    id=input("Inserisci id relativo al tuo nome in tabella studenti")
+                    gestione.dati_personali(id)
+                else:
+                    print("Errore")
 
             else:
                 print("Ruolo non valido")
