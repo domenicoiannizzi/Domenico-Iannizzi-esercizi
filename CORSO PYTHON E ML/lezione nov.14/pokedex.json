@@ -1,0 +1,50 @@
+{
+    "785": {
+        "numero": 785,
+        "nome": "tapu-koko",
+        "abilita": "electric-surge",
+        "xp": 285,
+        "peso": 20.5,
+        "altezza": 1.8
+    },
+    "437": {
+        "numero": 437,
+        "nome": "bronzong",
+        "abilita": "levitate",
+        "xp": 175,
+        "peso": 187.0,
+        "altezza": 1.3
+    },
+    "139": {
+        "numero": 139,
+        "nome": "omastar",
+        "abilita": "swift-swim",
+        "xp": 173,
+        "peso": 35.0,
+        "altezza": 1.0
+    },
+    "134": {
+        "numero": 134,
+        "nome": "vaporeon",
+        "abilita": "water-absorb",
+        "xp": 184,
+        "peso": 29.0,
+        "altezza": 1.0
+    },
+    "578": {
+        "numero": 578,
+        "nome": "duosion",
+        "abilita": "overcoat",
+        "xp": 130,
+        "peso": 8.0,
+        "altezza": 0.6
+    },
+    "746": {
+        "numero": 746,
+        "nome": "wishiwashi-solo",
+        "abilita": "schooling",
+        "xp": 61,
+        "peso": 0.3,
+        "altezza": 0.2
+    }
+}

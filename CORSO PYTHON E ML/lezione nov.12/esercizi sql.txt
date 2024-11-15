@@ -1,21 +1,31 @@
 es 1 sql
+Scrivete una query SQL che restituisca solo i record dalla tabella "products"
+con un prezzo superiore a 50
+
 SELECT * from products
 WHERE buyPrice > 50
 
 
 
 es 2 sql
+Scrivete una query SQL che restituisca tutti i record dalla tabella "orders"
+ordinati per data in ordine decrescente.
+
 SELECT * from orders
 ORDER BY orderDate DESC
 
 
 
 es 3 sql
+Scrivete una query SQL che aggiorni il prezzo di tutti i prodotti nella tabella
+"products" aumentandolo del 10%
 
 UPDATE products 
 SET buyPrice= buyPrice + (buyPrice * 0.10)
 
 es 4. sql
+Scrivete una query SQL che inserisca un nuovo utente nella tabella
+"customers".
 
 INSERT INTO customers ( customerNumber,
     customerName, 
@@ -34,6 +44,9 @@ SELECT employeeNumber FROM employees WHERE employeeNumber = 2554;
 
 es. 5 sql
 
+Scrivete una query SQL che elimini tutti gli ordini nella tabella "orders" con
+uno stato di "Cancelled".
+
 DELETE from orderdetails
 where orderNumber in (SELECT from orderdetails where status = "Cancelled)
 
@@ -44,10 +57,16 @@ where status = "Cancelled "
 
 
 es6 .sql
+Scrivete una query SQL che restituisca tutti gli utenti dalla tabella
+"customers" il cui nome inizia con la S e vivono in California
+
 SELECT * FROM `customers` WHERE contactFirstName like 'S%' and state = 'CA';
 
 
 es.7 sql
+Si vogliono recuperare dal database "world" la lingua e la nazione di ogni
+città
+
 SELECT city.Name, Country.name, countrylanguage.Language
 FROM city
 INNER JOIN country ON city.CountryCode= country.Code
