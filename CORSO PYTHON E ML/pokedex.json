@@ -1,0 +1,50 @@
+{
+    "678": {
+        "numero": 678,
+        "nome": "meowstic-male",
+        "abilita": "keen-eye",
+        "xp": 163,
+        "peso": 8.5,
+        "altezza": 0.6
+    },
+    "211": {
+        "numero": 211,
+        "nome": "qwilfish",
+        "abilita": "poison-point",
+        "xp": 88,
+        "peso": 3.9,
+        "altezza": 0.5
+    },
+    "101": {
+        "numero": 101,
+        "nome": "electrode",
+        "abilita": "soundproof",
+        "xp": 172,
+        "peso": 66.6,
+        "altezza": 1.2
+    },
+    "187": {
+        "numero": 187,
+        "nome": "hoppip",
+        "abilita": "chlorophyll",
+        "xp": 50,
+        "peso": 0.5,
+        "altezza": 0.4
+    },
+    "779": {
+        "numero": 779,
+        "nome": "bruxish",
+        "abilita": "dazzling",
+        "xp": 166,
+        "peso": 19.0,
+        "altezza": 0.9
+    },
+    "173": {
+        "numero": 173,
+        "nome": "cleffa",
+        "abilita": "cute-charm",
+        "xp": 44,
+        "peso": 3.0,
+        "altezza": 0.3
+    }
+}
