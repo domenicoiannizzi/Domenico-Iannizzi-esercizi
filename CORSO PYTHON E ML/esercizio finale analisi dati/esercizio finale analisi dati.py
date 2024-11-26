@@ -24,57 +24,57 @@ df=pd.DataFrame({'visitatori': visite_giornaliere,
 df['visitatori'] = df['visitatori'].astype(int)
 
 #analisi dati
-while True:
-        print("\n--- Menu ---")
-        print("1. Numero medio visitatori per mese e deviazione standard")
-        print("2. Patologia più frequente nel dataframe e patologie meno frequente")
-        print("3. Giorno con più visitatori e giorno con meno visitatori")
-        print("4 Esci")
-        scelta = input("Scegli un'opzione: ").strip()
+# while True:
+#         print("\n--- Menu ---")
+#         print("1. Numero medio visitatori per mese e deviazione standard")
+#         print("2. Patologia più frequente nel dataframe e patologie meno frequente")
+#         print("3. Giorno con più visitatori e giorno con meno visitatori")
+#         print("4 Esci")
+#         scelta = input("Scegli un'opzione: ").strip()
 
-        if scelta == "1":
-                mesi = ['Gennaio', 'Febbraio', 'Marzo', 'Aprile', 'Maggio', 'Giugno', 'Luglio', 'Agosto', 'Settembre', 'Ottobre', 'Novembre', 'Dicembre']
-                x=input("Vuoi scegliere un mese o vuoi la media per tutti i mesi? ").strip()
-                if x == "si":
-                   scelta1=input("Inserisci mese:  ")
-                   if scelta1.lower() in mesi:
-                          num_mesi = mesi.index(scelta1) + 1
-                          mesi_group = df.groupby(df.index.month)['visitatori']
-                          media_visit = mesi_group.get_group(num_mesi).mean()
-                          dev_std = mesi_group.get_group(num_mesi).std()
-                          print(f"\nIl numero medio di visitatori nel mese di {scelta1} è {media_visit:.2f} con una deviazione standard di {dev_std:.2f}")
+#         if scelta == "1":
+#                 mesi = ['Gennaio', 'Febbraio', 'Marzo', 'Aprile', 'Maggio', 'Giugno', 'Luglio', 'Agosto', 'Settembre', 'Ottobre', 'Novembre', 'Dicembre']
+#                 x=input("Vuoi scegliere un mese o vuoi la media per tutti i mesi? ").strip()
+#                 if x == "si":
+#                    scelta1=input("Inserisci mese:  ")
+#                    if scelta1.lower() in mesi:
+#                           num_mesi = mesi.index(scelta1) + 1
+#                           mesi_group = df.groupby(df.index.month)['visitatori']
+#                           media_visit = mesi_group.get_group(num_mesi).mean()
+#                           dev_std = mesi_group.get_group(num_mesi).std()
+#                           print(f"\nIl numero medio di visitatori nel mese di {scelta1} è {media_visit:.2f} con una deviazione standard di {dev_std:.2f}")
 
-                   else:
-                          print("Scelta errata")
+#                    else:
+#                           print("Scelta errata")
 
               
-                elif x == "no":
+#                 elif x == "no":
             
-                        mesi_group= df.groupby(df.index.month)['visitatori']
-                        for i, mese in enumerate(mesi):
-                                media_visit = mesi_group.get_group(i+1).mean()
-                                dev_std = mesi_group.get_group(i+1).std()
-                                print(f"\n Il numero medio di visitatori nel mese di {mese} è {media_visit:.2f} con una deviazione standard di {dev_std:.2f}")
-                else:
-                 print("Scelta non valida. Riprova.")                
-        elif scelta == "2":
-              patologia_count= df['Patologia'].value_counts()
-              print("Patologia più frequente : ",patologia_count.idxmax())
-              print("Patologia non valida : ",patologia_count.idxmin())
+#                         mesi_group= df.groupby(df.index.month)['visitatori']
+#                         for i, mese in enumerate(mesi):
+#                                 media_visit = mesi_group.get_group(i+1).mean()
+#                                 dev_std = mesi_group.get_group(i+1).std()
+#                                 print(f"\n Il numero medio di visitatori nel mese di {mese} è {media_visit:.2f} con una deviazione standard di {dev_std:.2f}")
+#                 else:
+#                  print("Scelta non valida. Riprova.")                
+#         elif scelta == "2":
+#               patologia_count= df['Patologia'].value_counts()
+#               print("Patologia più frequente : ",patologia_count.idxmax())
+#               print("Patologia non valida : ",patologia_count.idxmin())
 
-        elif scelta == "3":
-              giorno_max = df['visitatori'].idxmax()
-              visitatori_max = df['visitatori'].min()
-              giorno_min = df['visitatori'].idxmin()
-              visitatori_min = df['visitatori'].min()
-              print("Giorno con più visitatori : ", giorno_max, " -num_visitatori ", visitatori_max)
-              print("Giorno con meno visitatori : ", giorno_min, " - num_visitatori ", visitatori_min)
+#         elif scelta == "3":
+#               giorno_max = df['visitatori'].idxmax()
+#               visitatori_max = df['visitatori'].min()
+#               giorno_min = df['visitatori'].idxmin()
+#               visitatori_min = df['visitatori'].min()
+#               print("Giorno con più visitatori : ", giorno_max, " -num_visitatori ", visitatori_max)
+#               print("Giorno con meno visitatori : ", giorno_min, " - num_visitatori ", visitatori_min)
 
-        elif scelta == "4":
-              print("Esci")
-              break
-        else:
-              print("Scelta non valida. Riprova.")
+#         elif scelta == "4":
+#               print("Esci")
+#               break
+#         else:
+#               print("Scelta non valida. Riprova.")
 
 #Visualizzazione dati
 
