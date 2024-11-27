@@ -40,7 +40,8 @@ df_pca['target'] = y
 
 # Grafico scatter delle componenti principali
 plt.figure(figsize=(10,8))
-sns.scatterplot(data=df_pca, x='PC1', y='PC2')
+color=['blue', 'green', 'red']
+sns.scatterplot(data=df_pca, x='PC1', y='PC2',color=color)
 plt.title('PCA del dataset wine')
 plt.xlabel('Prima componente principale')
 plt.ylabel('Seconda componente principale')
