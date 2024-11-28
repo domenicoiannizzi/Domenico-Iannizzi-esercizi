@@ -127,6 +127,7 @@ def errori_classificazione(y_test, y_pred):
     return lista_errori 
 
 errori=errori_classificazione(y_test, y_pred)
+print(len(errori))
 if errori:
     for i in errori[:10]:
         print("Predizione: ", y_pred[i], "Reali: ", y_test[i])
