@@ -28,8 +28,7 @@ def visualizza_libri():
     if not libri:
         print("La libreria è vuota.")
     else:
-        for libro in libri:
-            print(libro)
+        return libri
 def cerca_libro():
     titolo = input("Inserisci il titolo da cercare: ")
     for libro in libri:
@@ -49,12 +48,29 @@ def gestisci_libro():
                 libri.remove(libro)
                 print("Libro rimosso.")
             elif scelta == '2':
-                print("Modifica non ancora implementata.")
+                print("Modifica le seguenti informazioni:")
+                
+                nuovo_titolo = input(f"Titolo : {libro.titolo}): ")
+                if nuovo_titolo:  
+                    libro.titolo = nuovo_titolo
+                
+                nuovo_autore = input(f"Autore: {libro.autore}): ")
+                if nuovo_autore: 
+                    libro.autore = nuovo_autore
+                
+                nuovo_anno = input(f"Anno: {libro.anno}): ")
+                if nuovo_anno:  
+                    libro.anno = int(nuovo_anno)  
+                
+                nuova_quantita = input(f"Quantità: {libro.quantita}): ")
+                if nuova_quantita: 
+                    libro.quantita = int(nuova_quantita) 
+                
             elif scelta == '3':
                 libro.quantita += 1
                 print("Copia aggiunta.")
-            else:
-                print("Libro non trovato.")
+            return
+        print("Libro non trovato.")
 
 while True:
     print("\n Libreria ")
